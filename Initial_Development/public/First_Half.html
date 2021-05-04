@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+
+    <title>Student's Table Page</title>
+
+    <link rel="stylesheet" href="style.css" media="screen">
+	<script src="client.js" charset="utf-8" defer></script>
+
+  </head>
+
+  <body>
+  <header>
+			<nav>
+				<h1> This page adds and removes students into the database </h1>
+			</nav>
+		</header>
+		
+		<ol>
+			<li><a	href= "Majors_page.html">Majors Table</a></li>	
+			<li><a	href= "Plans.html">Plans Table</a></li>			
+		</ol>
+	<script>
+		var request = new XMLHttpRequest();
+			var requestURL = "/page1.html/removeStudent";
+			 request.open('DELETE', requestURL);
+			 request.setRequestHeader('Content-Type', 'application/json');
+		
+	</script>
+	<div class = "container">
+		<table>
+			<tr>
+			  <td>StudentID</td>
+			  <td>GPA</td>
+			  <td>Name</td>
+			  <td>Program</td>
+			</tr>
+			
