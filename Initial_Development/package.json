@@ -55,9 +55,11 @@
     "url": "https://github.com/sindresorhus/package-json/issues"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "forever": "^3.0.4",
     "got": "^9.6.0",
     "handlebars": "^4.7.7",
+    "mysql": "^2.18.1",
     "registry-auth-token": "^4.0.0",
     "registry-url": "^5.0.0",
     "semver": "^6.2.0"
