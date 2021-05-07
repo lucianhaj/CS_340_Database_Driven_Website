@@ -5,51 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style_t.css"
+
 </head>
 <body>
+
   <div>
     <h2 id="department">Department</h2>
   </div>
-  <table id="department_table">
 
+  <!-searth box>
+  <div style='text-align:center; margin-bottom:10px;'>
+    <input type="text" name='search_value' id='search_value' placeholder='Search'>
+    <button id='search_button' class='search_button'>Search</button>
+    <div id='search_box' style="display: none; text-align:center;" >
+      <table id='search_table' style='text-align:center; margin:auto'>
+
+      </table>
+      <button id='close_search' class='form_buttons'>CLEAR</button>
+    </div>
+  </div>
+
+  <!add department>
+  <div style='text-align:center; margin-bottom:10px;'>
+    <button id='add_new_department' class='form_buttons' value='add'>Add Department</button>
+  </div>
+  <div id='add_department' style="display: none; text-align:center"  >
+    <form id='form_addDepartment' name='add_department'>
+      <label for name='department_name1'>Department Name</label>
+      <input class='input_button' id='department_name' name='department_name1' type='text' />
+      <label for name='department_funding1' >Department Funding</label>
+      <input class='input_button' name = 'department_funding1' id='department_funding' type='number' />
+      <input type='submit' value="SUBMIT" id='submit' class="form_buttons"/>
+    </form>
+
+  </div>
+
+  <table id="department_table">
     <tr>
       <th>  Department ID  </th>
       <th>Name</th>
       <th> Funding  </th>
-      <th>  number of teachers  </th>
       <th colspan="2" style="background:white; border:0px"></th>
-    </tr>
-
-    <tr>
-      <td>1</td>
-      <td>Computer Science</td>
-      <td>1000000</td>
-      <td>80</td>
-      <td>
-        <button class='form_buttons'>EDIT</button>
-      </td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Mathematics</td>
-      <td>2100000</td>
-      <td>80</td>
-      <td>
-        <button class='form_buttons'>EDIT</button>
-      </td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Physics</td>
-      <td>500000</td>
-      <td>90</td>
-      <td>
-        <button class='form_buttons'>EDIT</button>
-      </td>
     </tr>
 
 
   </table>
+
+  <script src="./department.js" type='text/javascript'></script>
+
+
 
 
 

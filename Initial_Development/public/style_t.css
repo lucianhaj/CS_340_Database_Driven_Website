@@ -1,63 +1,112 @@
 #teachers #department {
-    color: gray;
-    text-align: center;
-  
-  
-  }
-  * {
-    font-family: Trebuchet MS;
-  }
-  div #teachers{
-    border: 2px solid gray;
-    border-radius: 4px;
-    padding: 20px;
-    text-align: center;
-  }
-  div #department{
-    border: 2px solid gray;
-    border-radius: 4px;
-    padding: 20px;
-    text-align: center;
-  }
-  .form_buttons{
-    padding: 15px;
-    color:gray;
-    background-color: white;
-    color:rgb(93, 101, 102);
-    border: 1px solid gray;
-    border-radius: 2px;
-    padding-left: 50px;
-    padding-right: 50px;
-  
-  }
-  .form_buttons:hover{
-    background-color: rgb(89, 132, 148);
-    color:white;
-  
-  }
-  
-  .center{
-    text-align: center;
-  
-  }
-  form {
-    padding: 30px;
-    align-items: center;
-    text-align: center;
-  }
-  
-  #department_table{
-    border: 1px solid gray;
-    border-radius: 2px;
-    padding:10px;
-    text-align: center;
-  }
-  
-  #department_table th {
-    border: 1px solid gray;
-    border-radius: 2px;
-    padding:10px;
-    background-color: gray;
-    letter-spacing: 1px;
-  }
-  
+  color: gray;
+  text-align: center;
+
+
+}
+* {
+  font-family: Trebuchet MS;
+}
+div #teachers{
+  border: 2px solid gray;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+}
+div #department{
+  border: 2px solid gray;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+}
+.form_buttons{
+  padding: 15px;
+  color:gray;
+  background-color: white;
+  color:rgb(93, 101, 102);
+  border: 1px solid gray;
+  border-radius: 2px;
+  padding-left: 50px;
+  padding-right: 50px;
+
+}
+.form_buttons:hover{
+  background-color: rgb(89, 132, 148);
+  color:white;
+
+}
+
+.center{
+  text-align: center;
+
+}
+form {
+  padding: 30px;
+  align-items: center;
+  text-align: center;
+}
+
+#department_table, #search_table{
+  border: 1px solid gray;
+  border-radius: 2px;
+  padding:10px;
+  text-align: center;
+  margin:auto;
+}
+
+#department_table th, #teachers_table th {
+  border: 1px solid gray;
+  border-radius: 2px;
+  padding:10px;
+  background-color: gray;
+  letter-spacing: 1px;
+}
+
+.delete_button{
+  padding: 15px;
+  background-color: white;
+  color:rgb(222, 140, 141);
+  border: 1px solid rgb(222, 140, 141);
+  border-radius: 2px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.delete_button:hover{
+  background-color: rgb(222, 140, 141);
+  color:white;
+}
+
+input{
+  padding:10px;
+}
+#add_department, #teachers_table , #add_teacherBox{
+  border: 1px solid gray;
+  padding: 10px;
+  margin-bottom:10px;
+}
+.input_button{
+  background-color:white;
+  border-radius: 2px;
+  border: 1px solid gray;
+}
+label{
+  padding:10px;
+  border: 1px solid gray;
+  border-radius: 2px;
+
+}
+.search_button{
+  padding:10px;
+  color: gray;
+  border: 1px solid gray;
+  background-color: white;
+  border-radius: 2px;
+
+}
+.search_button:hover{
+  color: white;
+  background-color: rgb(129, 162, 172);
+}
+#search_table{
+  background-color: rgb(230, 230, 230);
+}
