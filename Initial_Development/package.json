@@ -55,6 +55,7 @@
     "url": "https://github.com/sindresorhus/package-json/issues"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "forever": "^3.0.4",
     "got": "^9.6.0",
