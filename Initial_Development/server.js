@@ -21,7 +21,8 @@ app.use(express.static('public'));
 
 // Database
 var db = require('./connector')
-var fs = require('fs');
+var fs = require('fs');							
+const mysql = require('./dbcon2.js');			// to access Azzam's database 
 
 
 
@@ -352,6 +353,22 @@ app.post('/page1.html/insertStudent', function(req,res){
 /*
     LISTENER
 */
+app.get('/students_info', function(req,res,next){
+	var result = {}
+	var context = {}
+    console.log(req);
+    
+    db.pool.query("SELECT * FROM Students", (err, rows, field)=>{
+        if(err){
+            next(err)
+            return
+        }
+        context.result = JSON.stringify(rows);
+        res.send(context);
+    });
+    console.log("Getting result");
+});
+
 app.listen(PORT, function(){            // This is the basic syntax for what is called the 'listener' which receives incoming requests on the specified PORT.
     console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.')
 });
