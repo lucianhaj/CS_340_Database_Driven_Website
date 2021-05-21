@@ -2,6 +2,34 @@
 document.addEventListener('DOMContentLoaded', bindFuntion);
 function bindFuntion(){
   getAllData();
+
+  //search for a teacher
+  document.getElementById('search_input').addEventListener('focus', function(event){
+    input = event.target;
+    document.getElementById('search_result').setAttribute('class', "search_result");
+    document.getElementById('search_result').style.display = 'block';
+    list = document.getElementById('list');
+    deleteList(list);
+    input.addEventListener('keyup', function(){
+      console.log('Now searching for: ',input.value);
+      let url = 'http://flip2.engr.oregonstate.edu:2300/find_teacher';
+      data = {name:input.value};
+      let req = new XMLHttpRequest();
+      req.open('post', url, false);
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.send(JSON.stringify(data))
+      var response = JSON.parse(req.responseText);
+      var result = JSON.parse(response.result);
+      console.log(result);
+      deleteList(list);
+      makeList(list,result);
+    });
+  });
+  document.getElementById('search_input').addEventListener('focusout', function(){
+    document.getElementById('search_result').style.display = 'none';
+
+  })
+
   document.getElementById('add_teacher').addEventListener('click', function(event){
     let add_teacherBox = document.getElementById('add_teacherBox');
     if(event.target.value == 'add'){
@@ -24,6 +52,7 @@ function bindFuntion(){
         }
         console.log(result);
       });
+
 
       //add teachers
       document.getElementById('add_teacher_button').addEventListener('click', function(event){
@@ -84,6 +113,25 @@ function getAllData(){
       cell_remove.innerHTML = "<button  class='delete_button'>DELETE</button>";
     }
 });
+}
+function deleteList(list){
+  var items = list.getElementsByTagName("li");
+  while(items.length > 0){
+    items[0].parentNode.removeChild(items[0]);
+  }
+}
+
+function makeList(list, result){
+  var size = result.length;
+  //list = list.getElementById('li');
+  for(let i =0; i < size; i++){
+    console.log('name ', result[i].name );
+    let item = document.createElement("li");
+    let item_value = document.createTextNode(result[i].name);
+    item.append(item_value);
+    list.append(item);
+  }
+
 }
 
 function deleteTable(table,row_zero = 1){

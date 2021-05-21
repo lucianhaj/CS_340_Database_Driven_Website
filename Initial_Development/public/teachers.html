@@ -4,12 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style_t.css" />
+    <link rel="stylesheet" href="/style_t.css" />
 </head>
 <body>
   <div>
     <h2 id='teachers'>Teachers</h2>
   </div>
+  <!search for a teacher>
+  <div id='wrapper'>
+
+    <input type='text' name='search_input' id='search_input' placeholder="Search"/>
+    <div id='search_result' style="display:none ">
+        <ul id = 'list'>
+          <li> One  </li>
+          <li >Sara </li>
+        </ul>
+    </div>
+  </div>
+
+
   <div class='center' >
     <button class ="form_buttons" id='add_teacher' value ='add'>Add Teachers</button>
     <div id='add_teacherBox' style='display:none;margin:auto' >

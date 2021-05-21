@@ -7,11 +7,12 @@
 * {
   font-family: Trebuchet MS;
 }
-div #teachers{
+div #teachers, .headers{
   border: 2px solid gray;
   border-radius: 4px;
   padding: 20px;
   text-align: center;
+
 }
 div #department{
   border: 2px solid gray;
@@ -110,3 +111,59 @@ label{
 #search_table{
   background-color: rgb(230, 230, 230);
 }
+#wrapper{
+  max-width: 450px;
+  margin: 50px auto;
+  background-color: #fffffe;
+  border-radius: 2px;
+  border: .5pt solid gray;
+}
+
+#search_input{
+  width: 100%;
+  background-color: rgba(98, 156, 173, 0.25);
+  box-sizing: border-box;
+  border:.5px solid gray;
+  margin: 0px;
+}
+#search_input:focus{
+  background-color: white;
+  border-radius: 0px;
+  border:0px;
+  outline: none;
+  box-shadow: 0px  2px 10px 0px rgba(98, 156, 173, 0.25) ;
+}
+
+#wrapper #search_result{
+  padding:0px;
+}
+#search_result ul li{
+  list-style: none;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+#search_result ul li:hover{
+  background-color: rgb(130, 196, 205);
+  border-radius: 3px;
+  margin-right: 30px;
+}
+.search_result{
+  animation-name: search_box_animation;
+  display: block;
+  animation-duration: .15s;
+  height: 150px;
+  overflow-y: scroll;
+
+
+}
+@keyframes search_box_animation{
+  from{ height:0px}
+  to{height: 150px; }
+}
+body{
+  align-items: center;
+}
+
+
+

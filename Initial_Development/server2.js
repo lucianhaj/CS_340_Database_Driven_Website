@@ -70,7 +70,14 @@ app.post('/search', function(req, res,next){
     });
     console.log("Getting result");
 });
-
+app.post('/find_teacher', function(req,res,next){
+    context = {}
+    name = `'${req.body.name}%'`;
+    mysql.pool.query(`SELECT * FROM teachers WHERE name like ${name} `, function(err, result){
+        context.result = JSON.stringify(result);
+        res.send(context);
+    });
+});
 ///teachers-add
 app.post('/teachers', function(req,res,next){
     console.log('here in postt adding ')
