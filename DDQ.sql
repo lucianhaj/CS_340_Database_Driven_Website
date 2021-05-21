@@ -1,9 +1,9 @@
 
-CREATE TABLE `Plans` (
+CREATE TABLE `GraduationPlan` (
     `Program` varchar(255) NOT NULL,
     `MajorID` int(11),
      PRIMARY KEY (`Program`)
- )ENGINE=InnoDB
+ )ENGINE=InnoDB;
 
 create table Departments(
   departID int primary key auto_increment not null,
@@ -19,7 +19,7 @@ create table if not exists Teachers(
     name varchar(50) not null,
     foreign key (departID) REFERENCES Departments(departID) on delete cascade on update cascade,
     unique(teacherID)
-  )
+);
 
 CREATE TABLE `Majors`(
     `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -30,7 +30,7 @@ CREATE TABLE `Majors`(
      PRIMARY KEY (`ID`),
      KEY `Name` (`Name`),
      CONSTRAINT FOREIGN KEY (`Name`) REFERENCES `Plans` (`MajorName`) ON DELETE SET NULL ON UPDATE CASCADE
- ) ENGINE=InnoDB
+) ENGINE=InnoDB;
 
 CREATE TABLE `Students` (
     `StudentID` int(11) NOT NULL AUTO_INCREMENT,
@@ -40,7 +40,7 @@ CREATE TABLE `Students` (
      PRIMARY KEY (`StudentID`),
      KEY `MajorID` (`MajorID`),
      CONSTRAINT `Students_fk_2` FOREIGN KEY (`MajorID`) REFERENCES `Majors` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE
- ) ENGINE=InnoDB
+) ENGINE=InnoDB;
 
 
 CREATE TABLE `StudentsTeachers` (
@@ -50,7 +50,7 @@ CREATE TABLE `StudentsTeachers` (
   KEY `sid` (`sid`),
   CONSTRAINT FOREIGN KEY (`sid`) REFERENCES `Students` (`StudentID`),
   CONSTRAINT FOREIGN KEY (`tid`) REFERENCES `teachers` (`teacherID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 insert into Departments(name, funding) values("Computer Science", 112220), ("Agriculture", 123000), ("Science", 500000);
 INSERT INTO Majors VALUES (1, 120, 'Computer Science', 20, 'Undergrad'), (2, 120, 'Marketing', 15, 'Undergrad'), (3, 140, 'Mechanical', 15, 'Undergrad'), (4, 100, 'Artifical Intelligence', 10, 'Graduate');
