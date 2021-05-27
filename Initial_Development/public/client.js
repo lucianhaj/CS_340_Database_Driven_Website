@@ -11,39 +11,53 @@ var table = document.querySelector('table');
 } */
 
 var num_rows = 1; 
-
+var teachers_array = new Array ();
+var count = 0;
 var createRowBtn = document.getElementById("create-row-button");
 var backdrop = document.getElementById("modal-backdrop");
 var modal = document.getElementById("create-row-modal");
-/* var delete_button = document.querySelectorAll(".student-delete-button");
-delete_button.onclick = function deleteStudent(){
+//svar delete_button = document.querySelector(".delete-student-button");
+/* delete_button.onclick = function deleteStudent(){
 	
-	var ID = this.parentNode.textContent;
-	ID = ID.toString().trim();
-	console.log("==what is trimmed", ID);
-	this.parentNode.parentNode.remove();
-	var request = new XMLHttpRequest();
-        var requestURL = "/page1.html/removeStudent";
-        
-        request.open('DELETE', requestURL);
-        var requestBody = JSON.stringify({StudentID:ID});
-        
-        request.setRequestHeader('Content-Type', 'application/json');
-        
-     
-        request.send(requestBody);
+	this.parentNode.remove();
 
 }
+
  */
 
 
 
-createRowBtn.onclick = function removeHidden(){
+var addTeachersButton = document.getElementById("add-teachers-input")
+addTeachersButton.onclick = function getTeachers(){
+	var Anchor = document.querySelector("p");
+	console.log("==", Anchor.textContent);
+	var Count = document.createElement('input');
+	Count.setAttribute("type","text");
+	Count.setAttribute("id","teacher-count-input");
+	Anchor.appendChild(Count);
+	//<input type="text" id="teacher-count-input">
+	var confirmButton = document.createElement('button');
+	confirmButton.textContent = "confirm";
+	Anchor.appendChild(confirmButton);
+	confirmButton.onclick = function confirmTeacher(){
+			confirmButton.onclick = ()=> false
+			var teacher_id = Count.value;
+			console.log("Count:", teacher_id);
+			teachers_array[count] = teacher_id;
+			console.log("TeachersArray", teachers_array);
 
-		backdrop.classList.remove("hidden");
-		modal.classList.remove("hidden");
+			count++;
+	Anchor.removeChild(confirmButton);
+	Anchor.removeChild(Count);
+		
+		
+		
+	}
+	 
+	
+	
+}
 
-};
 
 var acceptButton = document.querySelector(".modal-accept-button");
 var cancelButton = document.querySelector(".modal-cancel-button");
@@ -82,16 +96,18 @@ cell3.textContent = Name_content.value;
 cell4.textContent = MajorID_content.value;
 
 	del_button.onclick = function(){
+		console.log("ID is", id);
 		del_button.parentNode.remove();
         var request = new XMLHttpRequest();
         var requestURL = "/page1.html/removeStudent";
-        request.open('DELETE', requestURL);
-        var requestBody = JSON.stringify({StudentID:id});
+        request2.open('DELETE', request2URL);
+        var request2Body = JSON.stringify({StudentID:id});
         console.log("Body:", requestBody);
-        request.setRequestHeader('Content-Type', 'application/json');
-        
+        request2.setRequestHeader('Content-Type', 'application/json');
+       // document.location.reload(true);
+
      
-        request.send(requestBody);
+        request2.send(requestBody);
 	}
 
 
@@ -105,7 +121,7 @@ cell4.textContent = MajorID_content.value;
         var requestURL = "/page1.html/insertStudent";
         
         request.open('POST', requestURL);
-        var requestBody = JSON.stringify({StudentID:StudentID_content.value,GPA:GPA_content.value,Name:Name_content.value,MajorID:MajorID_content.value});
+        var requestBody = JSON.stringify({StudentID:StudentID_content.value,GPA:GPA_content.value,Name:Name_content.value,MajorID:MajorID_content.value,Teachers:teachers_array});
         
         request.setRequestHeader('Content-Type', 'application/json');
         
@@ -116,9 +132,9 @@ StudentID_content.value = "";
 GPA_content.value = ""; 
 Name_content.value = "";
 MajorID_content.value = "";   
-	
-        
+teachers_array.length = 0;
+
+
 	
 }
-
 
