@@ -22,14 +22,49 @@
 		
 		<ol>
 			<li><a	href= "Majors_page.html">Majors Table</a></li>	
-			<li><a	href= "Plans.html">Plans Table</a></li>			
+			<li><a	href= "Plans.html">Plans Table</a></li>	
+			<li><a	href= "/">Home</a></li>			
+			
 		</ol>
 	<script>
+	
+	 //	var Majors_JS = document.querySelector("[href='Majors_page.html']");
+		//Majors_JS.onclick = function Mjs(){
+		// var requestMajor = new XMLHttpRequest();
+       // var requestMajorURL = "/Majors.js";
+        
+       // requestMajor.open('GET', requestMajorURL);
+       // var requestMajorBody = JSON.stringify({});
+      //  requestMajor.setRequestHeader('Content-Type', 'application/javascript');
+        
+     
+       // requestMajor.send(requestMajorBody);
+		
+		 
+		
+		
+		
+		//}
 		var request = new XMLHttpRequest();
-			var requestURL = "/page1.html/removeStudent";
-			 request.open('DELETE', requestURL);
+			var requestURL = "/page1.html/removeFKStudent";
+			 request.open('PUT', requestURL);
 			 request.setRequestHeader('Content-Type', 'application/json');
 		
+		
+		var request2 = new XMLHttpRequest();
+			var request2URL = "/page1.html/removeStudent";
+			 request2.open('DELETE', request2URL);
+			 request2.setRequestHeader('Content-Type', 'application/json');
+			 
+		var request3 = new XMLHttpRequest();
+			var request3URL = "/page1.html/updateStudent";
+			 request3.open('PUT', request3URL);
+			 request3.setRequestHeader('Content-Type', 'application/json');
+		var request4 = new XMLHttpRequest();
+			var request4URL = "/page1.html";
+			 request4.open('GET', request4URL);
+			 request4.setRequestHeader('Content-Type', 'application/json');
+
 	</script>
 	<div class = "container">
 		<table>
