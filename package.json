@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/lucianhaj/CS_340_Database_Driven_Website#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "forever": "^3.0.4",
+    "handlebars": "^4.7.7",
     "mysql": "^2.18.1"
   }
 }

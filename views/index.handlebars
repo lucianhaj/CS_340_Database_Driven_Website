@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link rel='stylesheet' href='/style_t.css'/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class='div_header'>
+      <ul>
+        <li id='home_page' class='start_nav'><a href='/index' >Home</a></li>
+        <li id='student_list'>
+          <a href="/students">Student</a>
+        </li>
+        <li id='teacher_list'>
+          <a href="/teachers">Teachers</a>
+        </li>
+        <li id='department_list'>
+          <a href='/departments'>Departments</a>
+        </li>
+        <li id='major_list'>
+          <a href='/majors' >Majors</a>
+        </li>
+        <li id='plan_list' class='end_nav' >
+          <a href='/graduationPlan'>Graduation plan</a>
+        </li>
+        </ul>
+      </div>
+      <div>
+          <h1 class='index_header'>Welcom</h1>
+          <h1 class='index_header'>there<span class='index_header_animation'>!</span></h>
+      </div>
+      <div id='pages_container'>
+
+        <!-- Students -->
+        <a class='no_decoration' href="/students">
+          <div id='student_list' class='pages_container_child' >
+            <h4>Students</h4>
+            <link rel='icon' src='icons/graduation.svg' type='image/svg+xml'>
+            <span class="material-icons size">person</span>
+            <p class='dot'></p>
+            <p class='container_dif'>Acess student's major, names, GPA and graduation plans</p>
+          </div>
+        </a>
+
+        <!-- teachers -->
+        <a class='no_decoration' href='/teachers'>
+          <div id='teacher_list' class='pages_container_child' >
+            <h4>Teachers</h4>
+            <link rel='icon' src='icons/graduation.svg' type='image/svg+xml'>
+            <span class="material-icons size">assignment_ind</span>
+            <p class='dot'></p>
+            <p class='container_dif'>Access teachers's names, subject, and the department they works in!</p>
+          </div>
+        </a>
+
+
+        <!-- Departments -->
+        <a class='no_decoration' href='/departments'>
+          <div id='department_list' class='pages_container_child' >
+            <h4>Departments</h4>
+            <link rel='icon' src='icons/graduation.svg' type='image/svg+xml'>
+            <span class="material-icons size">domain</span>
+            <p class='dot'></p>
+            <p class='container_dif'>Access all the departmens</p>
+          </div>
+        </a>
+
+        <!-- Majors -->
+
+        <a class='no_decoration' href="/majors">
+          <div id='major_list' class='pages_container_child' >
+            <h4>Majors</h4>
+            <link rel='icon' src='icons/graduation.svg' type='image/svg+xml'>
+            <span class="material-icons size">topic</span>
+            <p class='dot'></p>
+            <p class='container_dif'>Find more information on majors' requirements </p>
+          </div>
+        </a>
+
+        <!-- graduation plans -->
+        <a class='no_decoration' href='/graduationPlan'>
+          <div id='plan_list' class='pages_container_child' >
+            <h4>Graduation Plans</h4>
+            <link rel='icon' src='icons/graduation.svg' type='image/svg+xml'>
+            <span class="material-icons size">school</span>
+            <p class='dot'></p>
+            <p class='container_dif'>Access and edit student's graduation plan!</p>
+          </div>
+        </a>
+
+
+      </div>
+  </body>
+</html>

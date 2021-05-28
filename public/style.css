@@ -1,0 +1,350 @@
+
+body{
+    background-color: rgba(184, 184, 184, 0.05);
+    color: rgba(108, 119, 122, 0.91);
+    font-family: Trebuchet MS;
+  
+}
+:root{
+--red:#f0262f;
+--blue:#199ddd;
+--light_blue:rgb(62, 197, 217);
+--orange:#f1c50e;
+--green:#06B26D;
+--light_red:#f54242;
+}
+.center{
+text-align: center;
+}
+.div_header{
+background-color: none;
+position: sticky;
+width: auto;
+height: 50px;
+margin:auto;
+
+
+}
+.div_header ul{
+margin: auto;
+background-color: none;
+outline: none;
+list-style: none;
+padding: 0px;
+display:flex;
+width: auto;
+margin-top: 0px;
+justify-content: center;
+margin: 0px;
+
+
+}
+
+.div_header ul li{
+padding:15px;
+margin: 0px;
+height:30px;
+flex-grow: 1;
+text-align: center;
+
+}
+.div_header ul li a{
+color: white;
+text-decoration:none;
+font-size: 25px;
+}
+#student_list{
+background-color: #199ddd;
+}
+#teacher_list{
+background-color: rgb(62, 197, 217);
+}
+#department_list{
+background-color: #f1c50e;
+}
+#major_list{
+background-color: #f0262f;
+}
+#plan_list{
+background-color:#06B26D;
+}
+#home_page{
+background-color: var(--light_red);
+}
+#student_list:hover, #home_page:hover, #teacher_list:hover,
+#major_list:hover, #department_list:hover, #plan_list:hover{
+border-bottom: 10px solid gray;
+}
+.space-120px{
+padding:120px;
+}
+.search_container{
+text-align: center;
+display: flex;
+justify-content: center;
+flex-direction: column;
+margin-left: 25%;
+margin-right: 25%;
+border-radius: 3px;
+}
+.search_container_focus{
+border: 1px solid #199ddd;
+
+}
+.search_input_focus{
+border-top:0px !important;
+border-left:0px !important;
+border-right:0px !important;
+box-shadow: 0px 1px 2px 0px #199ddd !important;
+border-bottom: 0px !important;
+border-bottom-left-radius: 0px !important;
+border-bottom-right-radius: 0px !important;
+}
+.search_input{
+padding: 10px;
+border:1px;
+border-radius: 3px;
+outline: none;
+margin:0px;
+}
+
+.search_result{
+min-height: 100px;
+max-height: 200px;
+overflow-y: auto;
+margin: 0px;
+padding: 10px;
+display: none;
+}
+.search_result_focus{
+display: block !important;
+}
+.search_result ul li{
+list-style: none;
+text-align: left;
+margin-top: 10px;
+padding: 5px;
+padding-left: 15px;
+}
+.search_result ul li:hover{
+background-color:white;
+color:#199ddd;
+border:.5px solid #199ddd;
+border-radius: 3px;
+}
+.dashboard_buttons{
+display: flex;
+justify-content: center;
+}
+.add_button, .list_button{
+background-color: #199ddd;
+padding:50px;
+margin: 10px;
+border: 1px solid #199ddd;
+border-radius: 3px;
+outline: none;
+}
+
+.material-icons.size{
+font-size: 50px;
+color:white;
+}
+.add_button:hover, .list_button:hover{
+opacity: .50;
+}
+.space-50px{
+padding:50px;
+}
+.add_textarea{
+margin-top: 20px;
+margin-left: 25%;
+margin-right:25%;
+padding:10px;
+border:1px solid #199ddd;
+border-radius: 3px;
+height: auto;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+align-items: center;
+}
+.add_textarea label{
+    padding: 15px;
+
+}
+.add_textarea input, .edit_input{
+padding: 15px;
+border-radius: 3px;
+border:1px solid #199ddd;
+outline: none;
+
+}
+.submit_add_button{
+padding:15px;
+color:white;
+background-color: #199ddd;
+margin: 10px;
+border-radius: 3px;
+border:0px;
+outline:none;
+min-width: 150px;
+}
+.submit_add_button:hover{
+background-color: rgb(120, 210, 255);
+border: 0px;
+}
+.list_table{
+text-align: center;
+padding:10px;
+border: 1px solid #199ddd;
+border-radius: 3px;
+justify-content: center;
+align-self: center;
+width:70%;
+margin-left: auto;
+margin-right: auto;
+align-items: center;
+margin-top:10px;
+}
+.edit_button{
+padding:15px;
+border:1px solid #199ddd;
+border-radius: 3px;
+color:#199ddd;
+width:80px;
+background-color: white;
+}
+.edit_button:hover{
+background-color:#199ddd;
+color:white;
+}
+.delete_button{
+color:#f0262f;
+border: 1px solid #f0262f;
+padding:15px;
+border-radius: 3px;
+width:80px;
+background-color: white;
+}
+.delete_button:hover{
+background-color:#f0262f;
+color:white;
+}
+.list_table table tr td{
+margin: 0px;
+padding:20px;
+width: 150px;
+max-width: 150px;
+}
+.list_table table tr:hover{
+color: var(--blue);
+}
+.search_item{
+text-align: center;
+border: 1px solid #199ddd;
+border-radius: 3px;
+margin-left :auto;
+margin-right: auto;
+margin-top:5px;
+width: 50%;
+}
+.hidden{
+display: none;
+}
+.page_container{
+border: 1pt solid green;
+border-radius: 3px;
+padding: 10px;
+width:70%;
+margin: auto;
+}
+.search_input_major{
+border: 1pt solid var(--red);
+}
+.search_input_teachers{
+border: 1pt solid var(--light_blue);
+}
+.search_input_departments{
+border: 1pt solid var(--orange);
+}
+.page_container_major{
+border:1pt solid var(--red)
+}
+.page_container_teachers{
+border: 1pt solid var(--light_blue);
+}
+.page_container_departments{
+border: 1pt solid var(--orange);
+}
+#search_container_plan{
+margin: auto;
+border: 1px solid green;
+}
+.show_table{
+margin: auto;
+padding: 5px;
+}
+#show_table_plan{
+border: 1px solid green;
+border-radius: 3px;
+}
+#show_table_major{
+border: 1px solid var(--red);
+border-radius: 3px;
+}
+.show_table_table tr td{
+border-bottom: 0pt solid gray;
+width: 180px;
+}
+.input_plan{
+padding: 15px;
+border-radius: 3px;
+border:1px solid var(--green);
+outline: none;
+background-color: white;
+}
+.input_teachers{
+padding: 15px;
+border-radius: 3px;
+border:1px solid var(--light_blue);
+outline: none;
+background-color: white;
+}
+.input_major{
+padding: 15px;
+border-radius: 3px;
+border:1px solid var(--red);
+outline: none;
+background-color: white;
+}
+.input_departments{
+padding: 15px;
+border-radius: 3px;
+border:1px solid var(--orange);
+outline: none;
+background-color: white;
+}
+.input_plan_edit{
+background-color: rgba(161, 196, 156, 0.31);
+}
+.input_major_edit{
+background-color: rgb(214, 66, 0);
+color:white;
+}
+.button_plan_edit{
+background-color: var(--green);
+color:white;
+border: 1pt solid var(--green);
+}
+.end_nav{
+border-top-right-radius: 3px;
+border-bottom-right-radius: 3px;
+}
+.start_nav{
+border-bottom-left-radius: 3px;
+border-top-left-radius: 3px;
+}
+#search_container_student{
+border: 1pt solid var(--blue);
+margin: auto;
+}

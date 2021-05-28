@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <link rel='stylesheet' href='style.css'>
+  </head>
+  <body>
+    <div class='div_header'>
+      <ul>
+        <li id='home_page' class='start_nav'><a href='/index'>Home</a></li>
+        <li id='student_list'>
+          <a href="/students">Student</a>
+        </li>
+        <li id='teacher_list'>
+          <a href="/teachers">Teachers</a>
+        </li>
+        <li id='department_list'>
+          <a href='/departments'>Departments</a>
+        </li>
+        <li id='major_list'>
+          <a href='/majors'>Majors</a>
+        </li>
+        <li id='plan_list' class='end_nav'>
+          <a href='/graduationPlan'>Graduation plan</a>
+        </li>
+        </ul>
+      </div>
+      <div class='space-50px'></div>
+      <!-- body of the page -->
+      <div class='page_container page_container_major center'>
+        <div class='search_container search_input_major' id='search_container_major'>
+          <input type='text' id='search_input_major' name='search_input' class='search_input' placeholder="Search...">
+        </div>
+        <!-- add a graudation plan -->
+        <div class=''>
+            <label>Name</label>
+            <input type='text' class="input_major" id='add_major_name'>
+            <lable>Credits Required</lable>
+            <input type='number'class='input_major' id='add_major_required'>
+            <label>Electives Required </label>
+            <input class='input_major' type="number"id='add_major_electives'>
+            <button class='submit_add_button' id='add_major'>Add</button>
+        </div>
+
+        <div class='show_table' id='show_table_majors'>
+          <table class='show_table_table' id='show_table_table'>
+          </table>
+        </div>
+      </div>
+
+      <script type='text/javascript' src='majors.js'></script>
+  </body>
+
+</html>
