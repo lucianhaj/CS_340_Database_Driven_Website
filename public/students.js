@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', bindFuntion);
 function bindFuntion(){
+  //getAllMajors
+  getAllMajors();
   //search search_box
   document.getElementById('search_input').addEventListener('focusin', function(event){
     search_container = document.getElementById('search_container');
@@ -219,4 +221,22 @@ function getAllData(){
 
   })
 
+}
+function getAllMajors(){
+  let url = "http://flip2.engr.oregonstate.edu:2300/majors";
+  fetch(url).then(function(response){
+    return response.json();
+  }).then(function(data){
+    make_students_list(data);
+    console.log('result from all data for majors ', data)
+    let select = document.getElementById('student_major_value');
+    for( let i = 0; i < data.length;i++){
+      let option = document.createElement('option');
+      option.text = data[i].name;
+      option.value = data[i].majorID;
+      console.log('print ', data[i].name, data[i].majorID );
+      select.add(option);
+
+    }
+  })
 }
