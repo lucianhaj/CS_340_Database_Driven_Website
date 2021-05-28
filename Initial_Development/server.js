@@ -7,7 +7,6 @@ var express = require('express');
 //var handlebars = require('express-handlebars');   // We are using the express library for the web server
 var app     = express();   
 app.use(express.json());         // We need to instantiate an express object to interact with the server in our code
-<<<<<<< HEAD
 PORT        = 48532;                // Set a port number at the top so it's easy to change in the future
 
 
@@ -15,28 +14,6 @@ PORT        = 48532;                // Set a port number at the top so it's easy
 // Database
 var db = require('./connector')
 var fs = require('fs');
-=======
-PORT        = 48531;                // Set a port number at the top so it's easy to change in the future
-
-
-const path =  require('path');
-/*
-var handlebars = require('express-handlebars').create({defaultLayout:'main'});
-app.use(express.urlencoded({extended:false}));
-app.engine('handlebars', handlebars.engine);
-app.set('view engine', 'handlebars');
-app.use(express.static('public'));
-*/
-
-// Database
-var db = require('./connector')
-var fs = require('fs');							
-const mysql = require('./dbcon2.js');			// to access Azzam's database 
-
-
-
-
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 /* let template = '';
 
 
@@ -67,7 +44,6 @@ catch(er){
 	
 }
  try{
-<<<<<<< HEAD
 var first_StudentsTeachers = fs.readFileSync("public/StudentsTeachers_first_half.html").toString();
 }
 catch(er){
@@ -96,8 +72,6 @@ catch(er){
 	
 }
  try{
-=======
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 var page1 = fs.readFileSync("public/page1.html").toString();
 }
 catch(er){
@@ -113,7 +87,6 @@ catch(er){
 	
 }
 try{
-<<<<<<< HEAD
 var Major = fs.readFileSync("public/Majors.js").toString();
 }
 catch(er){
@@ -121,8 +94,6 @@ catch(er){
 	
 }
 try{
-=======
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 var CSS = fs.readFileSync("public/style.css").toString();
 }
 catch(er){
@@ -170,37 +141,26 @@ catch(er){
 }
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 app.get('/page1.html', function(req,res,next){
 	
 	
 let template = '';
 
-<<<<<<< HEAD
-=======
-
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 querySelectAll = 'SELECT * FROM Students;';
 	db.pool.query(querySelectAll, function(err, results, fields){
 	console.log("==results:", results);						
 	var i;
-<<<<<<< HEAD
 	
 	
 	
 	
-=======
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 	Object.keys(results).forEach(function(key) {
       var row = results[key];
 	  var id = row.StudentID;
 	  var gpa = row.GPA;
 	  var name = row.Name;
 	  var major = row.MajorID;
-<<<<<<< HEAD
 		template += '\n'+ '<tr>'+ 
 		'<td>\n                          <button type = "button" id = "'+ id + '" onclick = "deleteStudent('+id+ ',this)">'
 		//+ 'alert("hello");};>'
@@ -208,20 +168,10 @@ querySelectAll = 'SELECT * FROM Students;';
 		+'</td>\n                        <td>' +gpa + '<button onclick = "updateStudent('+id+',this)">UpdateStudent  ' +id+ '</button>\n'
 		+'</td>\n                        <td>' + name +  
 		'</td>\n                        <td> <button onclick = request.send(JSON.stringify({StudentID:' +id+ '}));>SET to NULL</button>' + major +
-=======
-		template += '\n                    <tr>\n' +
-		'                        '+ 
-		'<td>\n                            <button onclick = request.send(JSON.stringify({StudentID:'+id+'}))>'
-		+ id + '</button>\n' + 
-		'</td>\n                        <td>' +gpa + 
-		'</td>\n                        <td>' + name +  
-		'</td>\n                        <td>' + major +
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 		'</td>\n' 
 		+ '\n                    </tr>\n';
 
     });
-<<<<<<< HEAD
 	template += '<script>\n function updateStudent(ID,t){\n'
 	+'					t.onclick = ()=> false\n'
 	+'var Count = document.createElement("input");\n'
@@ -304,12 +254,6 @@ querySelectAll = 'SELECT * FROM Students;';
 			template2 += '</table>';
 			});
 	
-=======
-	
-		/* onclick = "alert("hello");"	 */
-			
-			
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 		var temp = first + template + second;	
 			console.log(":temp", temp);
 			
@@ -320,11 +264,8 @@ querySelectAll = 'SELECT * FROM Students;';
 		res.setHeader("Content-Type","text/html");
 		res.write(temp);
 				res.end();
-<<<<<<< HEAD
 				
 				
-=======
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 
 });	
 
@@ -351,10 +292,6 @@ querySelectAll = 'SELECT * FROM Majors;';
 		'                        '+ 
 		'<td>\n                            <button onclick = function(){request.send(JSON.stringify({ID:'+id+'})); alert("hello");};>'
 		+ id + '</button>\n' + 
-<<<<<<< HEAD
-=======
-		'</td>\n                        <td>' +id + 
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 		'</td>\n                        <td>' + credits + 
 		'</td>\n                        <td>' + electives+ 
 		'</td>\n                        <td>' + name +
@@ -362,10 +299,7 @@ querySelectAll = 'SELECT * FROM Majors;';
 		'</td>\n' 
 		+ '\n                    </tr>\n';
 
-<<<<<<< HEAD
 
-=======
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
     });
 	
 		/* onclick = "alert("hello");"	 */
@@ -384,7 +318,6 @@ querySelectAll = 'SELECT * FROM Majors;';
 
 });	
 });
-<<<<<<< HEAD
 
 
 
@@ -483,8 +416,6 @@ querySelectAll = 'SELECT * FROM StudentsTeachers;';
 		
 });
  */
-=======
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 /* app.get('/style.css', function(req,res,next){
 			 res.statusCode = 200;
 		res.setHeader("Content-Type","text/css");
@@ -496,7 +427,6 @@ querySelectAll = 'SELECT * FROM StudentsTeachers;';
 		
 app.use(express.static('public'));
 
-<<<<<<< HEAD
 app.put('/page1.html/updateStudent', function(req,res,next){
 
 	console.log("==RequestBody for UPDATE Student GPA:", req.body.NewGPA, req.body.StudentID);
@@ -509,8 +439,6 @@ app.put('/page1.html/updateStudent', function(req,res,next){
 	
 });
 
-=======
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 app.all('/page1.html/removeStudent', function(req,res,next){
 
 	console.log("==RequestBody:", req.body.StudentID);
@@ -526,7 +454,6 @@ app.all('/page1.html/removeStudent', function(req,res,next){
 	//res.send(template);
 		// Send the results to the browser
 						//res.end();
-<<<<<<< HEAD
 
 queryRemove_MM_Relationship = 'DELETE FROM StudentsTeachers WHERE sid =' +req.body.StudentID;
 db.pool.query(queryRemove_MM_Relationship, function(err, results, fields){
@@ -535,12 +462,6 @@ db.pool.query(queryRemove_MM_Relationship, function(err, results, fields){
 });
 });
 
-=======
-																
-});
-
-
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 app.get('/requestTable', function(req,res,next){
 	let template = '';
 
@@ -604,7 +525,6 @@ app.get('/', function(req, res)
             });
         }); */
     });
-<<<<<<< HEAD
 	
 app.put('/page1.html/removeFKStudent', function(req,res){
 	var StudentID = req.body.StudentID;
@@ -630,39 +550,19 @@ app.post('/page1.html/insertStudent', function(req,res){
 		res.statusCode = 200;
 
 	var Teachers_Results = new Array ();
-=======
-
-app.get('/teachers.html', function(req,res){
-	res.statusCode = 200;
-	res.sendFile(path.join(__dirname, './public/teachers.html'));
-
-	//res.end();
-});
-
-app.get('/departments.html', function(req,res){
-	res.statusCode = 200;
-	res.sendFile(path.join(__dirname, 'public/departments.html'));
-		
-});
-app.post('/page1.html/insertStudent', function(req,res){
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 	var StudentID = req.body.StudentID;
 	var GPA = req.body.GPA;
 	var Name = req.body.Name;
 	var Major = req.body.MajorID;	
-<<<<<<< HEAD
 	var Teachers = req.body.Teachers;
 	console.log("== teachers:", Teachers);
 	console.log("== teachers:", Teachers[0]);
-=======
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 	
 	//
 	queryInsert = 'INSERT INTO Students VALUE (' + StudentID + ',' + GPA + ',' + "'"+ Name + "'" + ','  + Major + ');';
 	//console.log("==query", queryInsert);
 	querySelectAll = 'SELECT * FROM Students;';
 	db.pool.query(queryInsert, function(err,results,fields){
-<<<<<<< HEAD
 	
 	});
 	
@@ -766,20 +666,6 @@ app.post('/page1.html/insertPlan', function(req,res){
 	
 });
 
-=======
-	db.pool.query(querySelectAll, function(err, results, fields){
-
-                        // Send the results to the browser
-						res.statusCode = 200;
-
-						res.end();
-						});
-	
-	
-	});
-	
-});
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 /* app.get('/public/page1.html', function(req, res){
 			res.statusCode = 200;
 		res.setHeader("Content-Type","text/html");
@@ -792,25 +678,6 @@ app.post('/page1.html/insertPlan', function(req,res){
 /*
     LISTENER
 */
-<<<<<<< HEAD
-=======
-app.get('/students_info', function(req,res,next){
-	var result = {}
-	var context = {}
-    console.log(req);
-    
-    db.pool.query("SELECT * FROM Students", (err, rows, field)=>{
-        if(err){
-            next(err)
-            return
-        }
-        context.result = JSON.stringify(rows);
-        res.send(context);
-    });
-    console.log("Getting result");
-});
-
->>>>>>> da5758c3aee02ca9d6052a512ad95c44110a5eb0
 app.listen(PORT, function(){            // This is the basic syntax for what is called the 'listener' which receives incoming requests on the specified PORT.
     console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.')
 });
