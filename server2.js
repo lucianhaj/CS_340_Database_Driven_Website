@@ -226,7 +226,8 @@ app.put('/edit_students', function(req,res,next){
             return;
         }
         else{
-            mysql.pool.query("SELECT * FROM Students WHERE `ID`=?", [req.body.ID], function(err, rows, field){
+            let my_query = `SELECT Students.ID , Students.name, Students.gpa, Students.graduation_plan, Majors.name as majorName FROM Students JOIN Majors on Majors.majorID = Students.majorID where Students.ID = ${req.body.ID};` 
+            mysql.pool.query("SELECT Students.name, Students.gpa, Students.graduation_plan, Majors.name as majorName FROM Students JOIN Majors on Majors.majorID = Students.majorID WHERE Students.ID=?", [req.body.ID], function(err, rows, field){
                 if(err){
                     next(err)
                     
@@ -253,7 +254,8 @@ app.post('/add_students', function(req, res, next){
             return
         }
         else{
-            mysql.pool.query("SELECT * FROM Students", (err, rows, field)=>{
+            let my_query = "SELECT Students.ID , Students.name, Students.gpa, Students.graduation_plan, Majors.name as majorName FROM Students JOIN Majors on Majors.majorID = Students.majorID;";  
+            mysql.pool.query(my_query, (err, rows, field)=>{
                 if(err){
                     next(err)
                 }
@@ -273,7 +275,9 @@ app.post('/delete_students', function(req,res,next){
         }
         else{
             var context = {};
-            mysql.pool.query("SELECT * FROM Students", (err, rows, field)=>{
+            let my_query = "SELECT Students.ID ,Students.name, Students.gpa, Students.graduation_plan, Majors.name as majorName FROM Students JOIN Majors on Majors.majorID = Students.majorID;"; 
+
+            mysql.pool.query(my_query, (err, rows, field)=>{
                 if(err){
                     next(err)
                 }
@@ -288,13 +292,15 @@ app.post('/delete_students', function(req,res,next){
 });
 app.get('/students', function(req, res, next){
     var context = {};
-    var create_query = "create table  if not exists Students (`ID` int(11) primary key AUTO_INCREMENT, `name` varchar(50), graduation_plan varchar(50) DEFAULT NULL ,gpa float(3,2) DEFAULT NULL , `majorID` int(11) DEFAULT NULL,CONSTRAINT StudentsToMajors FOREIGN KEY(`majorID`) REFERENCES departments(`departID`));";
+    var create_query = "create table  if not exists Students (`ID` int(11) primary key AUTO_INCREMENT, `name` varchar(50), graduation_plan varchar(50) DEFAULT NULL ,gpa float(3,2) DEFAULT NULL , `majorID` int(11) DEFAULT NULL,CONSTRAINT StudentsToMajors FOREIGN KEY(`majorID`) REFERENCES Majors(`departID`));";
     mysql.pool.query(create_query,(err, rows, field)=>{
        if(err){
            next(err);
        } 
        else{ 
-        mysql.pool.query("SELECT * FROM Students", (err, rows, field)=>{
+        let my_query = "SELECT  Students.ID , Students.name, Students.gpa, Students.graduation_plan, Majors.name as majorName FROM Students JOIN Majors on Majors.majorID = Students.majorID;"; 
+
+        mysql.pool.query(my_query, (err, rows, field)=>{
             if(err){
                 next(err)
             }
@@ -307,7 +313,9 @@ app.get('/students', function(req, res, next){
     });
 });
 app.post('/student_search', function(req, res, next){
-    let my_query = `SELECT * FROM Students WHERE name like '${req.body.name}%'`;
+   // let my_query = `SELECT * FROM Students WHERE name like '${req.body.name}%'`;
+    let my_query = `SELECT  Students.ID , Students.name, Students.gpa, Students.graduation_plan, Majors.name as majorName FROM Students JOIN Majors on Majors.majorID = Students.majorID WHERE Students.name like '${req.body.name}%';` 
+
     mysql.pool.query(my_query, function(err, rows, field){
        var context = {}
        if(err){
@@ -450,7 +458,8 @@ app.post('/graduation_plan', function(req, res, next){
             next(err);
         }
         else{
-            mysql.pool.query("SELECT * FROM GraduationPlan", function(err, rows, field){
+            mysql.pool.query("select name, totalCredits , date(graduationDate) from GraduationPlan",
+            function(err, rows, field){
                 if(err){
                     next(err);
                     res.render('404');
@@ -528,7 +537,110 @@ app.delete('/graduation_plan', function(req, res, next){
         }
     });
 });
+app.post('/studentID', function(req,res, next){
+    let my_query = `SELECT ID from Students where name ='${req.body.name}';`
+    mysql.pool.query(my_query, function(err, rows, field){
+        if(err){
+            next(err)
+        }
+        else{
+            let context ={}
+            context = JSON.stringify(rows);
+            res.send(context);
+        }
+    });
+});
 
+app.post('/teacherID', function(req,res, next){
+    mysql.pool.query('SELECT teacherID from teachers where `name`=?;', [req.body.name], function(err, rows, field){
+        if(err){
+            next(err);
+        }
+        else{
+            let context = {}
+            context = JSON.stringify(rows);
+            res.send(context);
+        }
+    });
+})
+app.get('/studentTeacher', function(req, res, next){
+    let my_query = "SELECT  teachers.name as teacher_name, Students.name as student_name FROM `StudentTeacher` \
+                    JOIN Students on Students.ID=StudentTeacher.studentID \
+                    JOIN teachers on teachers.teacherID =StudentTeacher.teacherID;"
+    mysql.pool.query(my_query, function(err, rows, field){
+        if(err){
+            next(err);
+        }
+        else{
+            let context = {}
+            context = JSON.stringify(rows);
+            res.send(context);
+        }
+    });
+});
+app.post('/search_studentTeacher', function(req,res, next){
+    let my_query = `SELECT  teachers.name as teacher_name, Students.name as student_name FROM StudentTeacher \
+    JOIN Students on Students.ID=StudentTeacher.studentID \
+    JOIN teachers on teachers.teacherID =StudentTeacher.teacherID where Students.name like '${req.body.name}%';`; 
+    mysql.pool.query(my_query, function(err, rows, field){
+        if(err){
+            next(err);
+        }
+        else{
+            let context = {};
+            context = JSON.stringify(rows);
+            res.send(context);
+        }
+    })
+});
+app.delete('/studentTeacher', function(req,res, next){
+    mysql.pool.query("DELETE from StudentTeacher where `studentID`=? and `teacherID`=?", [req.body.studentID, req.body.teacherID], function(err, rows, field){
+        if(err){
+            next(err);
+        }
+        else{
+            
+            let my_query = "SELECT  teachers.name as teacher_name, Students.name as student_name FROM `StudentTeacher` \
+                    JOIN Students on Students.ID=StudentTeacher.studentID \
+                    JOIN teachers on teachers.teacherID =StudentTeacher.teacherID;"
+                mysql.pool.query(my_query, function(err, rows, field){
+                    if(err){
+                        next(err);
+                    }
+                    else{
+                        let context = {}
+                        context = JSON.stringify(rows);
+                        res.send(context);
+                    }
+                });
+        }
+    });
+});
+app.post('/studentTeacher', function(req,res, next){
+    mysql.pool.query("INSERT INTO StudentTeacher (`studentID`, `teacherID`) values(?,?)", [req.body.studentID, req.body.teacherID],
+        function(err, rows, field){
+            if(err){
+                next(err);
+            }
+            else{
+
+                let my_query = "SELECT  teachers.name as teacher_name, Students.name as student_name FROM `StudentTeacher` \
+                    JOIN Students on Students.ID=StudentTeacher.studentID \
+                    JOIN teachers on teachers.teacherID =StudentTeacher.teacherID;"
+                mysql.pool.query(my_query, function(err, rows, field){
+                    if(err){
+                        next(err);
+                    }
+                    else{
+                        let context = {}
+                        context = JSON.stringify(rows);
+                        res.send(context);
+                    }
+                });
+            }
+        });
+
+});
 app.use(function(req,res){
     res.status(404);
     res.render('404');

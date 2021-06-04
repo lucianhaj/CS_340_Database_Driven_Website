@@ -31,6 +31,9 @@ app.get('/graduationPlan', function(req, res){
 app.get('/index', function(req,res){
   res.render('index', {layout:false});
 });
+app.get('/students_to_teachers', function(req,res){
+  res.render('students_to_teachers', {layout:false});
+})
 
 
 

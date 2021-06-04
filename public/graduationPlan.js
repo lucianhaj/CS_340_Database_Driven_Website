@@ -67,13 +67,13 @@ function bindFuntion(){
       event.target.classList.remove('button_plan_edit');
       data = {name:name.value, graduationDate:graduationDate.value, totalCredits:totalCredits.value}
       let url = "http://flip2.engr.oregonstate.edu:2300/graduation_plan";
-      console.log('data is', data)
+      console.log('data sent ', data)
       let req = new XMLHttpRequest();
       req.open('put',url, false);
       req.setRequestHeader('Content-Type', 'application/json');
       req.send(JSON.stringify(data));
       let result = JSON.parse(req.responseText);
-      console.log('result from search:',result);
+      console.log('result update:',result);
       make_plan_list(result);
     }
   });
@@ -137,10 +137,23 @@ function make_plan_list(result){
     let input_graduationDate =  document.createElement('INPUT');
     input_totalCredits.setAttribute('type', "number");
     input_graduationDate.setAttribute('type', "date");
+    input_totalCredits.setAttribute('disabled', true);
+    input_graduationDate.setAttribute('disabled', true);
+
+
+    let date = result[i-1].graduationDate;
+    const new_date = date.split("T")
     input_totalCredits.setAttribute('value', result[i-1].totalCredits);
-    input_graduationDate.setAttribute('value', result[i-1].graduationDate);
+    input_graduationDate.setAttribute('value', new_date[0]);
     input_graduationDate.setAttribute('class', 'input_plan');
     input_totalCredits.setAttribute('class', 'input_plan');
+
+
+
+
+
+    //console.log('year', year, 'month', month, 'day', day);
+
 
     name.appendChild(input_name);
     graduationDate.appendChild(input_graduationDate);

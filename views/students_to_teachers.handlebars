@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
       <link rel='stylesheet' href='style.css'>
   </head>
   <body>
-    <div class='div_header'>
+        <div class='div_header'>
       <ul>
         <li id='home_page' class='start_nav'><a href='/index'>Home</a></li>
         <li id='student_list'>
@@ -26,31 +29,25 @@
       </div>
       <div class='space-50px'></div>
       <!-- body of the page -->
-      <div class='page_container center page_container_plan'>
-        <div class='search_container ' id='search_container_plan'>
-          <input type='text' id='search_input' name='search_input' class='search_input' placeholder="Search...">
+      <div class='page_container page_container_st center'>
+        <div class='search_container ' id='search_container_st'>
+          <input type='text' id='search_input_st' name='search_input' class='search_input' placeholder="Search for a student...">
         </div>
         <!-- add a graudation plan -->
-        <div class=''>
-            <label>Name</label>
-            <input type='text' class="input_plan " id='add_plan_name'>
-            <lable>Credits </lable>
-            <input type='number'class='input_plan' id='add_plan_credits'>
-            <label>Graduation Date </label>
-            <input class='input_plan' type="date"id='add_plan_date'>
-            <button class='submit_add_button' id='add_plan'>Add</button>
+        <div class='connect_ST'>
+            <input type='text' class="input_students" id='add_student_name' placeholder="Student's name..">
+            <div class="material-icons connect_icon" id='connect_icon'> insert_link</div>
+            <input type='text'class='input_teachers' id='add_teacher_name' placeholder="Teacher's name...">
+
         </div>
 
-        <div class='show_table' id='show_table_plan'>
+        <div class='show_table' id='show_table_st'>
           <table class='show_table_table' id='show_table_table'>
-              <tr>
 
-              </tr>
           </table>
         </div>
       </div>
-
-      <script type='text/javascript' src='graduationPlan.js'></script>
+    <script type='text/javascript' src='students_to_teachers.js'></script>
   </body>
 
 </html>
